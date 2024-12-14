@@ -24,10 +24,13 @@ Conventional Commits는 커밋 메시지를 작성하기 위한 규칙입니다.
    - feat: 새로운 기능 추가
    - fix: 버그 수정
    - docs: 문서 수정
+   - build: 빌드 작업 관련
+   - ci: Continuous Integration 관련
    - style: 코드 스타일 수정 (코드 동작에 영향을 주지 않음)
    - refactor: 코드 리팩토링
    - test: 테스트 추가 또는 수정
    - chore: 빌드 작업, 패키지 매니저 설정 등 (코드 생산과 직접 관련 없음)
+   - conf: 환경설정 관련
 - scope: 변경 사항이 적용되는 범위 (선택 사항)
 - subject: 커밋 제목 (필수) - 50자 이내, 명령형으로 작성
 - body: 커밋에 대한 자세한 설명 (선택 사항) - 72자마다 줄 바꿈
