@@ -3,11 +3,11 @@
 git config --global user.name "{username}"  
 git config --global user.email "{email}"  
 git config --global core.editor "vim"  
-git config --global core.pager "cat"  
+git config --global core.pager "cat"
 
-git config --list  
+git config --list
 
-수정이 필요할 경우, vim ~/.gitconfig 에서 값 수정 
+수정이 필요할 경우, vim ~/.gitconfig 에서 값 수정
 
 ## 빠른시작
 
