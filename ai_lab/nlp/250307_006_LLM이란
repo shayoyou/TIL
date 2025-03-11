@@ -1,0 +1,177 @@
+언어모델은 통계에 기반하고 있다
+신경망은 통계에 포함되어있다?
+
+하나의 언어 모델이 하나의 테스크를 수행 (과거)
+
+모델 사이즈 up
+학습 데이터 up
+다양한 테스크 수행하도록 학습
+Large Language Model 탄생
+
+그래서 LLM이란
+방대한 양의 텍스트로 트랜스포머를 학습하여 다양한 작업을 하는 AI 모델
+
+이미지 처리는 다른 분야인가?
+
+
+LLM History
+
+RNN -> GPT-3.5 -> ChatGPT
+
+RNN : 신경망 기반의 언어모델
+시퀀셜한(순차적인) 패턴을 처리하는데 유용
+
+한계점
+긴~ 시퀀스의 경우 좋은 성능이 안나옴
+예) 긴~ 책의 내용
+
+중요한 내용을 까먹지 않도록 Attention 모듈 적용
+
+Attention 만으로 구동하면 되지 않을까?
+그래서 셀프 Attention 나왔다
+
+결국은 RNN이 긴 내용을 처리하기 위해 Attention이 나왔다
+
+Attention 레이어를 여러개 쌓은 것이 Transformer
+
+Transformer
+Encoder - 텍스트를 이해하기 위한 컴포넌트
+Decoder - 이해한 텍스트를 기반으로 언어를 생성해내는 컴포넌트
+
+현재 대부분의 언어모델이 Transfomer Decoder 기반으로 구성이 되어 있다
+Encoder 는 많이 사용되지 않고 있다고 함
+
+
+Model Paradigm Transition
+
+예전에는 n개의 테스크가 있으면 n개의 데이터와 n개의 모델
+최근에는 하나의 거대한 모델을 만들고 약간의 파인튜닝 또는 프롬프트를 사용해서 각각의 테스크를 수행
+
+
+학습을 하려면 많은 양의 데이터가 필요해졌다
+
+Transformer Encoder 관점
+BERT: Masked Language Modeling 기법
+책이 있을 때 랜덤하게 중간중간 구멍을 낸 후 어떤 단어가 나올지 예측 학습을 시킴
+
+Decoder 관점
+GPT: Next Token Parediction
+주어진 문장 다음 어떤 단어가 올까? 예측을 하게끔 학습을 시킴
+
+저렴하게 대규모 학습을 시킬 수 있는 방법
+
+OpenAI 에서는 모델사이즈 up, 데이터 up 의 연구를 해봄
+GPT2: Language Models are Unsupervised Multitask Learners
+파인튜닝을 안해도 다양한 테스크 수행이 가능함을 발견
+
+샷 = 예시
+
+제로샷
+학습 과정에서는 테스크에서 보지 못했는데 학습하고 보니까 잘한다?
+번역을 학습하지 않았는데 번역을 하더라
+
+원샷
+예시를 하나 제공
+
+퓨샷
+예시를 여러개 제공
+
+스케일 법칙을 만들어보자!
+데이터 셋 사이즈를 키우고
+모델 사이즈 키우고
+모델 ~ 코스트를 기우니
+성능이 계속 좋아지더라
+
+Emergent Ability
+기존에는 못하던 테스크가 있었는데 모델이 커지니 잘해졌다?!
+모델이 커진다는 의미? 3b -> 7b
+
+GPT-3 연구
+In-context Learning
+예시를 넣어줄 수록 성능이 좋아진다?
+
+InstructGPT
+파인튜닝 적용하니 지시문에 대해 대답을 잘 하더라
+모델을 개인화? 시킬 수 있게 됨
+
+
+Alignment Tuning for Steerability
+모델의 응답을 사람에게 친숙하게 바꿔볼까?
+예) 아이폰이 좋아? 갤럭시가 좋아? 물어봤을 때 친숙한 대답을 하도록 한다
+RLHF 휴먼 피드백
+
+피드백을 통해 강화학습 진행
+
+
+How LLMs Work?
+
+1. Pre-training
+
+COMMON CRAWL 에서 대규모 웹 코퍼스를 모아줬다
+크롤링 데이터에는 필요없는 텍스트나 광고문구 등 쓸데없는 데이터가 있다
+그 필요없는 텍스트를 제거 작업한 곳
+- RedPajama
+- FineWeb
+
+대규모 모델은 이제 멀티 GPU 등 병렬적인 작업을 해야 함
+
+메가트론, 딥스피드, ...
+
+ZeRo Data Parallel
+Pipeline Parallel
+Model Parallel
+
+엔지니어링의 역할이 중요하다
+
+Synthetic Data
+Math Data
+Code Data
+
+
+2. Post-training
+
+언어적 이해보다는 사람의 의도가 들어간다
+예) 문서 요약해줘, 문서에서 특정 정보를 추출해줘 등
+
+Instruction Tuning 사용
+모델에 지시를 내리면 잘 응답했으면 좋겠다
+응답에 대해서만 로스를 준다
+
+데이터 모으기
+1. 사람이 어노테이션을 한다
+- 데이터 퀄리티가 좋긴 하지만
+- 비용이 너무 비쌈
+
+2. LLM을 이용
+- Self-instruct
+    seed : 어쩔 수 없이 직접 구함
+    모델을 이용해서 seed를 Q를 준다
+    나온 대답을 모아서 데이터셋으로 사용
+- Orca
+- Self-alignment
+    A를 가지고 Q를 생성하도록 모델을 만든다
+- WizardLM
+    
+
+3. Alignment training
+
+Q에서 나온 응답이 여러개인 경우 사람이 선호하는 응답에 순위를 준다
+RLHF and RLAIF (휴먼, AI)
+RRHF
+DPO
+
+
+기타
+미드 트레이닝
+
+
+LLM 응용사례들
+
+Prompt Enginearing
+Context, Examples, Instruction
+
+
+검색 증강 생성 (Retrieval-Augmented Generation, RAG)
+
+LLM 은 최신정보가 부족
+할루시네이션
