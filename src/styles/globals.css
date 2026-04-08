@@ -1,0 +1,93 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --sidebar-bg: #f8f9fa;
+  --sidebar-border: #ececec;
+  --primary: #0070f3;
+  --secondary: #666666;
+  --border-radius: 8px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+}
+
+[data-theme='dark'] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --sidebar-bg: #141414;
+  --sidebar-border: #262626;
+  --primary: #3291ff;
+  --secondary: #a0a0a0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sidebar-border);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+code {
+  font-family: var(--font-mono);
+  background: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+pre {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}

@@ -1,0 +1,65 @@
+.notebook {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-sans);
+}
+
+.cell {
+  width: 100%;
+}
+
+.markdownCell {
+  padding: 0.5rem 0;
+}
+
+.codeCell {
+  border: 1px solid var(--sidebar-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.inputArea, .outputArea {
+  display: flex;
+  padding: 0.5rem;
+}
+
+.prompt {
+  min-width: 60px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--secondary);
+  padding-top: 0.5rem;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.code, .output {
+  flex: 1;
+  overflow-x: auto;
+}
+
+.code pre {
+  margin: 0;
+  padding: 0.5rem;
+  background: transparent;
+}
+
+.output {
+  border-top: 1px solid var(--sidebar-border);
+  background: white;
+}
+
+.output pre {
+  margin: 0;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  background: transparent;
+}
+
+.output img {
+  max-width: 100%;
+  height: auto;
+  padding: 1rem;
+}
