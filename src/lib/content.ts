@@ -28,18 +28,20 @@ export const getContentTree = (): ContentNode[] => {
       .map((entry) => {
         const relativePath = path.join(dir, entry.name);
         if (entry.isDirectory()) {
-          return {
+          const node: ContentNode = {
             name: entry.name,
             path: relativePath,
             type: 'directory',
             children: buildTree(relativePath),
           };
+          return node;
         }
-        return {
+        const node: ContentNode = {
           name: entry.name,
           path: relativePath,
           type: 'file',
         };
+        return node;
       })
       .filter((node) => 
         node.type === 'directory' || 
@@ -52,7 +54,7 @@ export const getContentTree = (): ContentNode[] => {
   return CONTENT_DIRS.map((dir) => ({
     name: dir === 'ai_lab' ? 'AI Lab' : 'Coding Test',
     path: dir,
-    type: 'directory',
+    type: 'directory' as const,
     children: buildTree(dir),
   }));
 };
