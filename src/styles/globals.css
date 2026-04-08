@@ -8,6 +8,7 @@
   --border-radius: 8px;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  --header-height: 60px;
 }
 
 [data-theme='dark'] {
@@ -64,6 +65,18 @@ a {
   padding: 2rem 3rem;
   max-width: 1000px;
   margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .main-content {
+    padding: 1.5rem 1rem;
+    margin-top: var(--header-height);
+  }
 }
 
 /* Typography */
