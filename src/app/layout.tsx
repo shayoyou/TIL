@@ -92,7 +92,7 @@ export default function RootLayout({
           }
 
           .sidebar-wrapper {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, visibility 0.3s ease;
           }
 
           @media (max-width: 768px) {
@@ -109,11 +109,15 @@ export default function RootLayout({
               transform: translateX(-100%);
               background: var(--sidebar-bg);
               width: 280px;
-              box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+              box-shadow: none;
+              visibility: hidden;
+              overflow: hidden;
             }
 
             .sidebar-wrapper.open {
               transform: translateX(0);
+              visibility: visible;
+              box-shadow: 2px 0 10px rgba(0,0,0,0.1);
             }
 
             .sidebar-overlay {
